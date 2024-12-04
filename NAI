@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nairobi and I - Ticket Purchase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Nairobi and I</h1>
+        <p><strong>Date:</strong> 14th February 2025</p>
+        <p><strong>Time:</strong> 3:00 PM - 5:00 PM</p>
+        <p><strong>Location:</strong> Unseen Nairobi</p>
+
+        <form id="ticketForm">
+            <h2>Purchase Your Ticket</h2>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="quantity">Number of Tickets:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10" required>
+
+            <button type="submit">Proceed to Payment</button>
+        </form>
+
+        <div id="ticketDetails" class="hidden">
+            <h2>Your Ticket</h2>
+            <p><strong>Name:</strong> <span id="buyerName"></span></p>
+            <p><strong>Email:</strong> <span id="buyerEmail"></span></p>
+            <p><strong>Tickets:</strong> <span id="buyerQuantity"></span></p>
+            <p><strong>Date:</strong> 14th February 2025</p>
+            <p><strong>Time:</strong> 3:00 PM - 5:00 PM</p>
+            <p><strong>Location:</strong> Unseen Nairobi</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+    color: #444;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+document.getElementById('ticketForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const quantity = document.getElementById('quantity').value;
+
+    document.getElementById('buyerName').textContent = name;
+    document.getElementById('buyerEmail').textContent = email;
+    document.getElementById('buyerQuantity').textContent = quantity;
+
+    document.getElementById('ticketForm').classList.add('hidden');
+    document.getElementById('ticketDetails').classList.remove('hidden');
+});
